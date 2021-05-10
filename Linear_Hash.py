@@ -1,7 +1,4 @@
-#!/usr/bin/env python
-# coding: utf-8
 
-# In[1]:
 
 
 import random                                    #LIBRERIE E VARIABILI GLOBALI
@@ -13,7 +10,7 @@ max_number_to_generate = 100                     #numero più alto da generare n
 hash_table = [None] * hash_dim                   #popolazione della tabella con placeholder
 
 
-# In[2]:
+
 
 
 def insert_generation(hash_table,insert_dim):              #GENERAZIONE INSERIMENTI
@@ -22,7 +19,7 @@ def insert_generation(hash_table,insert_dim):              #GENERAZIONE INSERIME
         linear_insert(hash_dim,insert_value,hash_table)              #chiamata per inserire
 
 
-# In[3]:
+
 
 
 def linear_insert(hash_dim, insert_value,hash_table):     #INSERIMENTO
@@ -40,8 +37,6 @@ def linear_insert(hash_dim, insert_value,hash_table):     #INSERIMENTO
     
 
 
-# In[4]:
-
 
 def linear_delete(hash_table,delete_value):                    #CANCELLAZIONE
     i = linear_search(hash_table,delete_value,hash_dim)        #cerca il valore da cancellare
@@ -53,7 +48,7 @@ def linear_delete(hash_table,delete_value):                    #CANCELLAZIONE
     
 
 
-# In[5]:
+
 
 
 def linear_search(hash_table,search_value,hash_dim):         #RICERCA
@@ -62,10 +57,7 @@ def linear_search(hash_table,search_value,hash_dim):         #RICERCA
             return i
     print ("Valore non presente ")
 
-    
 
-
-# In[ ]:
 
 
 

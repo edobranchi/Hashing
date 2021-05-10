@@ -1,14 +1,6 @@
-#!/usr/bin/env python
-# coding: utf-8
-
-# In[ ]:
-
-
 hash_dim = 20
 from random import randint
 
-
-# In[ ]:
 
 
 #stampa della lista
@@ -66,26 +58,19 @@ for i in range(hash_dim):
 display_hash (HashTable)
 
 
-# In[ ]:
+
 
 
 hash_search(HashTable,283)
 
 
-# In[ ]:
 
 
 hash_delete(HashTable,295)
 display_hash (HashTable)
 
 
-# In[ ]:
 
-
-
-
-
-# In[ ]:
 
 
 
