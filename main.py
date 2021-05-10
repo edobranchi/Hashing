@@ -1,6 +1,12 @@
 from matplotlib import pyplot as plt
 import numpy as np
 
+#TODO: menu per scelta hash lineare o hash concatenato
+#TODO: sotto menù per inserimento cancellazzione e ricerca di entrambi i tipi di hash
+#TODO:vedere come genera i file di test
+#TODO:grafici per lineare e concatenato
+#TODO: Commentare le parti importanti
+
 with open("result.txt") as f:
     i = 0
     j = 0
