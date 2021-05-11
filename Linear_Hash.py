@@ -11,7 +11,8 @@ hash_table = [None] * hash_dim                   #popolazione della tabella con 
 
 
 
-
+def linear_display():
+    placeholder=0
 
 def insert_generation(hash_table,insert_dim):              #GENERAZIONE INSERIMENTI
     for i in range (insert_dim):

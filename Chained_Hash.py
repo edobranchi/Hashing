@@ -1,10 +1,10 @@
-hash_dim = 20
+
 from random import randint
 
-
+global hash_dim
 
 #stampa della lista
-
+hash_dim = 20
 def display_hash(hashTable): 
       
     for i in range(len(hashTable)): 
@@ -17,7 +17,7 @@ def display_hash(hashTable):
         print() 
   
 #creazione della tabella hash come lista annidata
-global hash_dim
+
 HashTable = [[] for _ in range(hash_dim)] 
   
 #funzione di hash
