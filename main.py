@@ -53,7 +53,10 @@ while loop:  ## While loop which will keep going until loop = False
 
     if choice == 2:
         print("Creazione Hash concatenato")
-        Chained_Hash.insert(50)
+        hash_dim = int(input("Dimensione tabella hash desiderata:"))
+        num_ins = int(input("Numero di inserimenti: "))
+        Chained_Hash.list_creation(hash_dim)
+        Chained_Hash.insert(num_ins)
         annidated_loop=True
         while annidated_loop:
             print_sub_menu()
