@@ -25,15 +25,17 @@ loop = True
 
 while loop:  ## While loop which will keep going until loop = False
     print_menu()  ## Displays menu
-    choice = int(input("Enter your choice [1-7]: "))
+    choice = int(input("Enter your choice [1-3]: "))
 
     if choice == 1:
         print("Creazione Hash lineare")
-        Linear_Hash.insert_generation(50)
+        hash_dim = int(input("Dimensione tabella hash desiderata:"))
+        num_ins = int(input("Numero di inserimenti: "))
+        Linear_Hash.insert_generation(hash_dim,num_ins)
         annidated_loop= True
         while annidated_loop:
             print_sub_menu()
-            choice_linear= int(input("Enter your choice [1-7]: "))
+            choice_linear= int(input("Enter your choice [1-4]: "))
             if choice_linear == 1:
                 search_value = int(input("Inserire il valore da cercare:"))
                 Linear_Hash.linear_search(search_value)
@@ -46,8 +48,7 @@ while loop:  ## While loop which will keep going until loop = False
                 print("Torno al menu precedente")
                 annidated_loop=False
             else:
-                input("Nessuna scelta corrispondente riprovare")
-
+                print("Nessuna scelta corrispondente riprovare...")
 
 
     if choice == 2:

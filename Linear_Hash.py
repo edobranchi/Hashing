@@ -5,8 +5,8 @@ import random                                    #LIBRERIE E VARIABILI GLOBALI
 collision=0                                      #collision counter
 linear_index=0
 global hash_dim
-hash_dim = random.randrange(1,1000,1)            #generazione dimensioni tabella
-insert_dim= random.randrange(1,hash_dim-1,1)     #generazione numero di inserimenti
+#hash_dim = random.randrange(1,1000,1)            #generazione dimensioni tabella
+#insert_dim= random.randrange(1,hash_dim-1,1)     #generazione numero di inserimenti
 max_number_to_generate = 100                     #numero più alto da generare nell inserimento
 global hash_table                   #popolazione della tabella con placeholder
 
@@ -14,7 +14,7 @@ global hash_table                   #popolazione della tabella con placeholder
 
 
 
-def insert_generation(insert_dim):
+def insert_generation(hash_dim,insert_dim):
     global hash_table
     hash_table = [None] * hash_dim #GENERAZIONE INSERIMENTI
     for i in range (insert_dim):
