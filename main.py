@@ -1,7 +1,6 @@
-from matplotlib import pyplot as plt
-import numpy as np
 import Linear_Hash
 import Chained_Hash
+import plot
 
 #TODO:vedere come genera i file di test
 #TODO:grafici per lineare e concatenato
@@ -12,7 +11,9 @@ def print_menu():  ## Your menu design here
     print(30 * "-", "MENU", 30 * "-")
     print("1. Popolazione Hash Lineare")
     print("2. Popolazione Hash Concatenato")
-    print("3. exit")
+    print("3. Grafici Hash Lineare")
+    print("4. Grafici Hash Concatenato")
+    print("5. exit")
     print(67 * "-")
 def print_sub_menu():
     print(30 * "-", "MENU", 30 * "-")
@@ -74,7 +75,12 @@ while loop:  ## While loop which will keep going until loop = False
                 annidated_loop=False
             else:
                 input("Nessuna scelta corrispondente riprovare")
-    elif choice==3:
+
+    if choice == 3:
+        plot.linear_plot()
+    if choice == 4:
+        plot.chained_plot()
+    elif choice==5:
         print("Fine programma, esco.")
         loop=False
 
