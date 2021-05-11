@@ -37,7 +37,8 @@ def display_hash():
 
 
 
-def hash_search(HashTable,search_value):
+def hash_search(search_value):
+
     for index1,list in enumerate(HashTable):
         for index,element in enumerate(list):
             if element == search_value:
@@ -46,8 +47,8 @@ def hash_search(HashTable,search_value):
     print("valore non trovato")
 
 #cancellazzione elemento
-def hash_delete(HashTable,delete_value):
-    index=hash_search(HashTable,delete_value)
+def hash_delete(delete_value):
+    index=hash_search(delete_value)
     try:
         HashTable[index[0]].pop(index[1])
     except:

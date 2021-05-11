@@ -62,9 +62,11 @@ while loop:  ## While loop which will keep going until loop = False
             print_sub_menu()
             choice_linear= int(input("Enter your choice [1-7]: "))
             if choice_linear == 1:
-                Chained_Hash.hash_search()
+                search_num = int(input("Inserisci il valore da cercare: "))
+                Chained_Hash.hash_search(search_num)
             elif choice_linear == 2:
-                Chained_Hash.hash_delete()
+                del_num = int(input("Inserisci il valore da eliminare: "))
+                Chained_Hash.hash_delete(del_num)
             elif choice_linear == 3:
                 Chained_Hash.display_hash()
             elif choice_linear==4:
