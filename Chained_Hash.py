@@ -5,12 +5,12 @@ global hash_dim
 
 #stampa della lista
 hash_dim = 20
-def display_hash(hashTable): 
-      
-    for i in range(len(hashTable)): 
+def display_hash():
+    global HashTable
+    for i in range(len(HashTable)):
         print(i, end = " ") 
           
-        for j in hashTable[i]: 
+        for j in HashTable[i]:
             print("-->", end = " ") 
             print(j, end = " ") 
               
@@ -18,18 +18,31 @@ def display_hash(hashTable):
   
 #creazione della tabella hash come lista annidata
 
-HashTable = [[] for _ in range(hash_dim)] 
+global HashTable
+HashTable = [[] for _ in range(hash_dim)]
   
 #funzione di hash
-def Hashing(rand_keyvalue): 
+def Hashing(rand_keyvalue):
     return rand_keyvalue % len(HashTable) 
   
   
+
+
+
+
 #inserimento
-def insert(Hashtable, rand_keyvalue, rand_value): 
-    hash_key = Hashing(rand_keyvalue) 
-    Hashtable[hash_key].append(rand_value) 
-  
+def insert(Hash_dim):
+
+    for i in range(hash_dim):
+        rand_keyvalue = randint(0, 100)
+        rand_value = randint(0, 300)
+        #insert(HashTable, rand_keyvalue, rand_value)
+        hash_key = Hashing(rand_keyvalue)
+        HashTable[hash_key].append(rand_value)
+
+
+
+
 #generazione dati da inserire
 def hash_search(HashTable,search_value):
     for index1,list in enumerate(HashTable):
@@ -47,12 +60,12 @@ def hash_delete(HashTable,delete_value):
     except:
         print("Impossibile cancellare")
     
-#generazione numeri casuali da inserire
-for i in range(hash_dim):
-    rand_keyvalue= randint(0, 100)
-    rand_value = randint(0,300)
-    insert(HashTable, rand_keyvalue, rand_value) 
-
+# #generazione numeri casuali da inserire
+# for i in range(hash_dim):
+#     rand_keyvalue= randint(0, 100)
+#     rand_value = randint(0,300)
+#     insert(HashTable, rand_keyvalue, rand_value)
+#
 #stampa
 
 # display_hash (HashTable)

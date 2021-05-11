@@ -53,7 +53,7 @@ while loop:  ## While loop which will keep going until loop = False
 
     if choice == 2:
         print("Creazione Hash concatenato")
-        # TODO:Chiamare creazione
+        Chained_Hash.insert(50)
         annidated_loop=True
         while annidated_loop:
             print_sub_menu()
