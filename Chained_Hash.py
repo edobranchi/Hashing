@@ -55,19 +55,19 @@ for i in range(hash_dim):
 
 #stampa
 
-display_hash (HashTable)
-
-
-
-
-
-hash_search(HashTable,283)
-
-
-
-
-hash_delete(HashTable,295)
-display_hash (HashTable)
+# display_hash (HashTable)
+#
+#
+#
+#
+#
+# hash_search(HashTable,283)
+#
+#
+#
+#
+# hash_delete(HashTable,295)
+# display_hash (HashTable)
 
 
 

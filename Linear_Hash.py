@@ -4,22 +4,27 @@
 import random                                    #LIBRERIE E VARIABILI GLOBALI
 collision=0                                      #collision counter
 linear_index=0
+global hash_dim
 hash_dim = random.randrange(1,1000,1)            #generazione dimensioni tabella
 insert_dim= random.randrange(1,hash_dim-1,1)     #generazione numero di inserimenti
 max_number_to_generate = 100                     #numero più alto da generare nell inserimento
-hash_table = [None] * hash_dim                   #popolazione della tabella con placeholder
+global hash_table                   #popolazione della tabella con placeholder
 
 
 
-def linear_display():
-    placeholder=0
 
-def insert_generation(hash_table,insert_dim):              #GENERAZIONE INSERIMENTI
+
+def insert_generation(insert_dim):
+    global hash_table
+    hash_table = [None] * hash_dim #GENERAZIONE INSERIMENTI
     for i in range (insert_dim):
         insert_value = random.randrange(0,max_number_to_generate,1) 
         linear_insert(hash_dim,insert_value,hash_table)              #chiamata per inserire
+    print(type(hash_table))
 
-
+def linear_display():
+    global hash_table
+    print(hash_table)
 
 
 
@@ -52,11 +57,16 @@ def linear_delete(hash_table,delete_value):                    #CANCELLAZIONE
 
 
 
-def linear_search(hash_table,search_value,hash_dim):         #RICERCA
+def linear_search(search_value):         #RICERCA
+    global hash_table
+    global hash_dim
+    found=False
     for i in range(hash_dim):
         if hash_table[i] == search_value:                   #ritorna il primo valore corrispondente che trova
-            return i
-    print ("Valore non presente ")
+            print("trovato in posizione :  " , i)
+            found = True
+    if found== False:
+        print ("Valore non presente ")
 
 
 

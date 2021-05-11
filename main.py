@@ -2,8 +2,7 @@ from matplotlib import pyplot as plt
 import numpy as np
 import Linear_Hash
 import Chained_Hash
-#TODO: menu per scelta hash lineare o hash concatenato
-#TODO: sotto menù per inserimento cancellazzione e ricerca di entrambi i tipi di hash
+
 #TODO:vedere come genera i file di test
 #TODO:grafici per lineare e concatenato
 #TODO: Commentare le parti importanti
@@ -30,13 +29,14 @@ while loop:  ## While loop which will keep going until loop = False
 
     if choice == 1:
         print("Creazione Hash lineare")
-        #TODO:Chiamare creazione
+        Linear_Hash.insert_generation(50)
         annidated_loop= True
         while annidated_loop:
             print_sub_menu()
             choice_linear= int(input("Enter your choice [1-7]: "))
             if choice_linear == 1:
-                Linear_Hash.linear_search()
+                search_value = int(input("Inserire il valore da cercare:"))
+                Linear_Hash.linear_search(search_value)
             elif choice_linear == 2:
                 Linear_Hash.linear_delete()
             elif choice_linear == 3:
@@ -70,6 +70,7 @@ while loop:  ## While loop which will keep going until loop = False
     elif choice==3:
         print("Fine programma, esco.")
         loop=False
+
 # with open("result.txt") as f:
 #     i = 0
 #     j = 0
