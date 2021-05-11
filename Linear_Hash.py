@@ -44,8 +44,9 @@ def linear_insert(hash_dim, insert_value,hash_table):     #INSERIMENTO
 
 
 
-def linear_delete(hash_table,delete_value):                    #CANCELLAZIONE
-    i = linear_search(hash_table,delete_value,hash_dim)        #cerca il valore da cancellare
+def linear_delete(delete_value):                    #CANCELLAZIONE
+    global hash_table
+    i = linear_search(delete_value)        #cerca il valore da cancellare
     if i==None:
         print("impossibile cancellare")                        
     else:
@@ -64,6 +65,7 @@ def linear_search(search_value):         #RICERCA
     for i in range(hash_dim):
         if hash_table[i] == search_value:                   #ritorna il primo valore corrispondente che trova
             print("trovato in posizione :  " , i)
+            return i
             found = True
     if found== False:
         print ("Valore non presente ")

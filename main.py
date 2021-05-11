@@ -38,7 +38,8 @@ while loop:  ## While loop which will keep going until loop = False
                 search_value = int(input("Inserire il valore da cercare:"))
                 Linear_Hash.linear_search(search_value)
             elif choice_linear == 2:
-                Linear_Hash.linear_delete()
+                delete_value = int(input("Inserire il valore da eliminare:"))
+                Linear_Hash.linear_delete(delete_value)
             elif choice_linear == 3:
                 Linear_Hash.linear_display()
             elif choice_linear==4:
