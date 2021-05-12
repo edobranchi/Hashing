@@ -2,17 +2,22 @@ import random
 import time
 import math
 
+import numpy as np
+from matplotlib import pyplot as plt
+
 
 def truncate(number, digits) -> float:
     stepper = 10.0 ** digits
     return math.trunc(stepper * number) / stepper
 
-def linear_plot():
-    hash_dim = random.randrange(1000,2000)
+def linear_plot(hash_dim,num_ins):
+    if num_ins>hash_dim:
+        print("Il numero di inserimenti eccede la dimensione della tabella, riprova")
+        return
     hash_table = [None] * hash_dim
     collision = 0
     linear_index=0
-    for i in range(random.randrange(1000,hash_dim)):
+    for i in range(num_ins):
         start_time = time.time()
         time.sleep(0.5)
         insert_value=random.randrange(40,50)
@@ -36,29 +41,40 @@ def linear_plot():
         result_linear.writelines(str(result_list) + "\n")
         result_linear.close()
 
-        if (load_factor % 0.05) == 0 :
-            found=False
-            search_value = random.randrange(50,60)
-            start_time = time.time()
-            time.sleep(0.5)
-            for i in range(hash_dim):
-                if hash_table[i] == search_value:  # ritorna il primo valore corrispondente che trova
-                    found=True
-            exec_time = time.time() - start_time
-            exec_time = exec_time % 1
-            exec_time = f'{exec_time:.10f}'
-            print(search_value,"     ",load_factor,"     ",exec_time,"    ",found)
-            result_list = [search_value,load_factor,exec_time,found]
-            result_linear = open('Result/result_lin_lf.txt', 'a')
-            result_linear.writelines(str(result_list) + "\n")
-            result_linear.close()
+    with open('Result/result_linear.txt','r+') as f:
+        lines = f.readlines()
+
+        x_values = [line.split(",")[3] for line in lines]
+        y_values = [line.split(",")[4] for line in lines]
+
+
+        x_values = [s.replace("(", "").replace("'", "").replace(" ", "") for s in x_values]
+        y_values = [s.replace(")", "").replace("\n", "").replace(" ", "") for s in y_values]
+
+        x_values[:] = (elem[:5] for elem in x_values)
+
+
+        x_values = [float(item) for item in x_values]
+        y_values = [float(item) for item in y_values]
+
+        # Note that even in the OO-style, we use `.pyplot.figure` to create the figure.
+        fig, ax = plt.subplots()  # Create a figure and an axes.
+        ax.plot(x_values, y_values, label='linear')  # Plot some data on the axes.
+        ax.set_xlabel('Load Factor:')  # Add an x-label to the axes.
+        ax.set_ylabel('Tempo (s)')  # Add a y-label to the axes.
+        ax.set_title("Tempo inserimenti al variare del fattore di carico:")  # Add a title to the axes.
+        plt.yticks(np.arange(0.40,0.60,step=0.02))
+        plt.xticks(np.arange(0,1.1, step=0.1))
+        plt.savefig('result/load_factor_time_linear_hash.png')
+        plt.show()
 
 
 
+        f.close()
+        open('Result/result_linear.txt','w').close()
 
 
-def chained_plot(num_ins):
-        hash_dim = random.randrange(100, 200)
+def chained_plot(num_ins,hash_dim):
         HashTable = [[] for _ in range(hash_dim)]
         for i in range(num_ins):
             start_time = time.time()
@@ -72,25 +88,39 @@ def chained_plot(num_ins):
             exec_time = f'{exec_time:.10f}'
             load_factor = i / hash_dim
             print(hash_dim, "    ",rand_value,"    ", i,"      ", truncate(float(exec_time), 4), "   ",load_factor)
-            result_list = [hash_dim, rand_value, i, truncate(float(exec_time), 4)]
+            result_list = [hash_dim, rand_value, i, truncate(float(exec_time), 4),truncate(float(load_factor),2)]
             result_linear = open('Result/result_chained.txt', 'a')
             result_linear.writelines(str(result_list) + "\n")
             result_linear.close()
-            if (0 <= math.fmod(load_factor, 0.05) <= 0.01):
-                found=False
-                start_time = time.time()
-                time.sleep(0.5)
-                search_value = random.randrange(50, 60)
-                for index1, list in enumerate(HashTable):
-                    for index, element in enumerate(list):
-                        if element == search_value:
-                            found=True
+        with open('Result/result_chained.txt','r+') as f:
+            lines = f.readlines()
 
-                exec_time = time.time() - start_time
-                exec_time = exec_time % 1
-                exec_time = f'{exec_time:.10f}'
-                result_list = [search_value, load_factor, exec_time,found]
-                result_linear = open('Result/result_cha_lf.txt', 'a')
-                result_linear.writelines(str(result_list) + "\n")
-                result_linear.close()
+            x_values = [line.split(",")[4] for line in lines]
+            y_values = [line.split(",")[3] for line in lines]
+
+
+            x_values = [s.replace("(", "").replace("'", "").replace(" ", "").replace("]","").replace("\n","") for s in x_values]
+            y_values = [s.replace(")", "").replace("\n", "").replace(" ", "").replace("]","") for s in y_values]
+
+            x_values[:] = (elem[:5] for elem in x_values)
+
+
+            x_values = [float(item) for item in x_values]
+            y_values = [float(item) for item in y_values]
+
+            # Note that even in the OO-style, we use `.pyplot.figure` to create the figure.
+            fig, ax = plt.subplots()  # Create a figure and an axes.
+            ax.plot(x_values, y_values, label='linear')  # Plot some data on the axes.
+            ax.set_xlabel('Load Factor:')  # Add an x-label to the axes.
+            ax.set_ylabel('Tempo (s)')  # Add a y-label to the axes.
+            ax.set_title("Tempo inserimenti al variare del fattore di carico:")  # Add a title to the axes.
+            plt.yticks(np.arange(0.40,0.60,step=0.02))
+            plt.xticks(np.arange(0,11, step=1))
+            plt.savefig('Result/load_factor_time_chained_hash.png')
+            plt.show()
+
+
+
+            f.close()
+            open('Result/result_chained.txt','w').close()
 

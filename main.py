@@ -77,10 +77,13 @@ while loop:  ## While loop which will keep going until loop = False
                 input("Nessuna scelta corrispondente riprovare")
 
     if choice == 3:
-        plot.linear_plot()
-    if choice == 4:
+        hash_dim = int(input("Inserisci la dimensione della tabella:"))
         num_ins = int(input("Inserisci il numero di inserimenti da creare:"))
-        plot.chained_plot(num_ins)
+        plot.linear_plot(hash_dim,num_ins)
+    if choice == 4:
+        hash_dim = int(input("Inserisci la dimensione della tabella:"))
+        num_ins = int(input("Inserisci il numero di inserimenti da creare:"))
+        plot.chained_plot(num_ins,hash_dim)
     elif choice==5:
         print("Fine programma, esco.")
         loop=False
