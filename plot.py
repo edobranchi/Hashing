@@ -36,3 +36,24 @@ def linear_plot():
         result_linear.writelines(str(result_list) + "\n")
         result_linear.close()
 
+
+def chained_plot(num_ins):
+        hash_dim = random.randrange(100, 200)
+        HashTable = [[] for _ in range(hash_dim)]
+        for i in range(num_ins):
+            start_time = time.time()
+            time.sleep(0.5)
+            rand_keyvalue = random.randrange(1000, 2000)
+            rand_value = random.randrange(100, 200)
+            hash_key =  rand_keyvalue % len(HashTable)
+            HashTable[hash_key].append(rand_value)
+            exec_time = time.time() - start_time
+            exec_time = exec_time % 1
+            exec_time = f'{exec_time:.10f}'
+            print(hash_dim, "    ",rand_value,"    ", i,"      ", truncate(float(exec_time), 4))
+            result_list = [hash_dim, rand_value, i, truncate(float(exec_time), 4)]
+            result_linear = open('Result/result_chained.txt', 'a')
+            result_linear.writelines(str(result_list) + "\n")
+            result_linear.close()
+
+

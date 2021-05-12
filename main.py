@@ -79,7 +79,8 @@ while loop:  ## While loop which will keep going until loop = False
     if choice == 3:
         plot.linear_plot()
     if choice == 4:
-        plot.chained_plot()
+        num_ins = int(input("Inserisci il numero di inserimenti da creare:"))
+        plot.chained_plot(num_ins)
     elif choice==5:
         print("Fine programma, esco.")
         loop=False
