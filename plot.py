@@ -9,7 +9,6 @@ def truncate(number, digits) -> float:
 
 def linear_plot():
     hash_dim = random.randrange(1000,2000)
-    max_number_of_insertion = hash_dim-1
     hash_table = [None] * hash_dim
     collision = 0
     linear_index=0
@@ -30,11 +29,32 @@ def linear_plot():
         exec_time = exec_time % 1
         exec_time = f'{exec_time:.10f}'
         load_factor= i/hash_dim
-        print(hash_dim,"   ", insert_value,"    " ,i,"   ",truncate(load_factor,4),"    ",truncate(float(exec_time),4),"   ",collision)
-        result_list=[hash_dim,insert_value,i,truncate(load_factor,4),truncate(float(exec_time),4),collision]
+        load_factor=truncate(load_factor,3)
+        print(hash_dim,"   ", insert_value,"    " ,i,"   ",load_factor,"    ",truncate(float(exec_time),4),"   ",collision)
+        result_list=[hash_dim,insert_value,i,load_factor,truncate(float(exec_time),4),collision]
         result_linear = open('Result/result_linear.txt', 'a')
         result_linear.writelines(str(result_list) + "\n")
         result_linear.close()
+
+        if (load_factor % 0.05) == 0 :
+            found=False
+            search_value = random.randrange(50,60)
+            start_time = time.time()
+            time.sleep(0.5)
+            for i in range(hash_dim):
+                if hash_table[i] == search_value:  # ritorna il primo valore corrispondente che trova
+                    found=True
+            exec_time = time.time() - start_time
+            exec_time = exec_time % 1
+            exec_time = f'{exec_time:.10f}'
+            print(search_value,"     ",load_factor,"     ",exec_time,"    ",found)
+            result_list = [search_value,load_factor,exec_time,found]
+            result_linear = open('Result/result_lin_lf.txt', 'a')
+            result_linear.writelines(str(result_list) + "\n")
+            result_linear.close()
+
+
+
 
 
 def chained_plot(num_ins):
@@ -50,10 +70,27 @@ def chained_plot(num_ins):
             exec_time = time.time() - start_time
             exec_time = exec_time % 1
             exec_time = f'{exec_time:.10f}'
-            print(hash_dim, "    ",rand_value,"    ", i,"      ", truncate(float(exec_time), 4))
+            load_factor = i / hash_dim
+            print(hash_dim, "    ",rand_value,"    ", i,"      ", truncate(float(exec_time), 4), "   ",load_factor)
             result_list = [hash_dim, rand_value, i, truncate(float(exec_time), 4)]
             result_linear = open('Result/result_chained.txt', 'a')
             result_linear.writelines(str(result_list) + "\n")
             result_linear.close()
+            if (0 <= math.fmod(load_factor, 0.05) <= 0.01):
+                found=False
+                start_time = time.time()
+                time.sleep(0.5)
+                search_value = random.randrange(50, 60)
+                for index1, list in enumerate(HashTable):
+                    for index, element in enumerate(list):
+                        if element == search_value:
+                            found=True
 
+                exec_time = time.time() - start_time
+                exec_time = exec_time % 1
+                exec_time = f'{exec_time:.10f}'
+                result_list = [search_value, load_factor, exec_time,found]
+                result_linear = open('Result/result_cha_lf.txt', 'a')
+                result_linear.writelines(str(result_list) + "\n")
+                result_linear.close()
 
