@@ -9,14 +9,14 @@ def insert_generation(hash_dim,insert_dim):
     global hash_table
     if insert_dim>hash_dim:
         print("Il numero di inserimenti eccede la dimensione della tabella, riprova")
-        return
+        return False
 
     hash_table = [None] * hash_dim #GENERAZIONE INSERIMENTI
 
     for i in range (insert_dim):
         insert_value = random.randrange(0,100,1)
-        linear_insert(hash_dim,insert_value,hash_table)              #chiamata per inserire
-    print(type(hash_table))
+        linear_insert(hash_dim,insert_value,hash_table) #chiamata per inserire
+    return True
 
 def linear_display():
     global hash_table
@@ -36,7 +36,6 @@ def linear_insert(hash_dim, insert_value,hash_table):     #INSERIMENTO
             h_k = 0
 
     hash_table[h_k]= insert_value                  #se trova una posizione nuova inserisce il valore
-
 def linear_delete(delete_value):                    #CANCELLAZIONE
     global hash_table
     i = linear_search(delete_value)        #cerca il valore da cancellare

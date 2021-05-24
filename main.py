@@ -29,8 +29,11 @@ while loop:  ## While loop which will keep going until loop = False
         print("Creazione Hash lineare")
         hash_dim = int(input("Dimensione tabella hash desiderata:"))
         num_ins = int(input("Numero di inserimenti: "))
-        Linear_Hash.insert_generation(hash_dim,num_ins)
-        annidated_loop= True
+        success_bool = Linear_Hash.insert_generation(hash_dim,num_ins)
+        if success_bool==True:
+            annidated_loop = True
+        else:
+            annidated_loop= False
 
         while annidated_loop:
             print_sub_menu()
