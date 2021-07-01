@@ -9,7 +9,10 @@ def print_menu():  ## Your menu design here
     print("2. Popolazione Hash Concatenato")
     print("3. Grafici Hash Lineare")
     print("4. Grafici Hash Concatenato")
-    print("5. exit")
+    print("5. Test Ricerca con successo concatenamento")
+    print("6. Test Ricerca senza successo concatenamento")
+    print("7. Test Ricerca con successo lineare")
+    print("8. Test Ricerca senza successo lineare")
     print(67 * "-")
 
 def print_sub_menu():
@@ -99,6 +102,17 @@ while loop:  ## While loop which will keep going until loop = False
         plot.chained_plot(num_ins,hash_dim)
 
     elif choice==5:
-        print("Fine programma, esco.")
-        loop=False
+        hash_dim = int(input("Inserisci la dimensione della tabella:"))
+        plot.research_plot_chained_success(hash_dim)
+
+    elif choice == 6:
+        hash_dim = int(input("Inserisci la dimensione della tabella:"))
+        plot.research_plot_chained_notsuccess(hash_dim)
+    elif choice == 7:
+        hash_dim = int(input("Inserisci la dimensione della tabella:"))
+        plot.research_plot_linear_success(hash_dim)
+
+    elif choice == 8:
+        hash_dim = int(input("Inserisci la dimensione della tabella:"))
+        plot.research_plot_linear_notsuccess(hash_dim)
 
